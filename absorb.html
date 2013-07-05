@@ -14,13 +14,37 @@
 	<div class="bar">
 		<button class="btn">...</button>
 	</div>
-	<div class="list articles">
+	<div class="list articles" data-bind="foreach: articles">
 		<div class="item">
 			<div class="article">
-				<span class="title">Apple Hires CEO of Yves Saint Laurent To Head Special Projects</span>
-				<span class="preview">alphadogg writes "Apple has hired Paul Deneve, until Tuesday the CEO of French luxury brand Yves Saint Laurent, to work as its vice president for special projects, igniting fresh speculation about possible new product launches including a TV or wearable computing devices such as a smart watch. He'll be reporting directly to CEO Tim Cook. Unsurprisingly, the company doesn't want to elaborate on what kind of special projects Deneve, who has worked at Apple in the past, will be working on. But the hire has resulted in analysts speculating, and wearable computing is on top of the list."</span>
+				<span class="title" data-bind="text: title"></span>
+				<span class="preview" data-bind="text: summary"></span>
 			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+$(document).ready(function() {
+	var $m = {};
+	$m.articles = ko.observableArray();
+
+	function receiveArticles(data) {
+		$.each(data.articles, function(i,a) {
+			$m.articles.push(a);
+		});
+	}
+
+	ko.applyBindings($m, document.body);
+
+	var $req = $.ajax({
+		type: 'GET',
+		url: 'http://warrenfalk.com/reader/json.php',
+		contentType: 'application/json; charset=UTF-8',
+		dataType: 'json',
+		data: null,
+		success: function(data) { receiveArticles(data); },
+		error: function(req,status) { console.log('fail: ' + status); },
+	});
+})
+</script>
 </html>
