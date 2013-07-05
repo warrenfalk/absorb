@@ -29,13 +29,15 @@ body {
     width: 44px;
 }
 
-.article {
-    height: 84px;
-    overflow: hidden;
+.item {
     padding: 5px 8px;
-    font-size: 17px;
     border-bottom: solid 1px #CCCCCC;
 }
+.article {
+    height: 65px;
+    font-size: 17px;
+    overflow: hidden;
+ }
 .article .title {
     font-weight: bold;
 }
