@@ -30,14 +30,16 @@ body {
 }
 
 .item {
-    padding: 5px 8px;
+    height: 68px;
     border-bottom: solid 1px #CCCCCC;
 }
 .article {
-    height: 65px;
+    height: 57px;
+    margin: 5px 8px;
     font-size: 17px;
     overflow: hidden;
- }
+    line-height: 19px;
+}
 .article .title {
     font-weight: bold;
 }
@@ -47,5 +49,4 @@ body {
 .article .preview {
     color: #888888;
     font-size: 14px;
-    line-height: 18px;
 }
